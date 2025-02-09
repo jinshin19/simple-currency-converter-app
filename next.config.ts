@@ -1,8 +1,5 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  target: "serverless",
-  reactStrictMode: true,
-};
+const nextConfig: NextConfig = {};
 
 export default nextConfig;
