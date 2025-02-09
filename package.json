@@ -2,6 +2,7 @@
   "name": "simple-currency-converter-app",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@9.13.2",
   "scripts": {
     "dev": "next dev",
     "build": "npx @cloudflare/next-on-pages@1",
