@@ -1,11 +1,11 @@
 "use client";
 import { ChangeEvent, useEffect, useState } from "react";
 import {
-  useGetCurrencyCodesAPI,
-  useGetCurrencyPricesAPI,
+  getCurrencyCodesAPI,
+  getCurrencyPricesAPI,
 } from "./utils/APIs/currencyConverterAPI";
 
-export default function page() {
+export default function HomePage() {
   const [currencyDataStates, SetCurrencyDataStates] =
     useState<CurrencyDataStatesI>({
       currencies: [],
@@ -33,7 +33,7 @@ export default function page() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await useGetCurrencyCodesAPI();
+      const data = await getCurrencyCodesAPI();
       if (data?.supported_codes === undefined || data === undefined) {
         throw new Error("Failed to fetch the currency codes");
       }
@@ -46,9 +46,9 @@ export default function page() {
   }, []);
 
   useEffect(() => {
-    if (currencyDataStates.value !== "") {
-      const fetchData = async () => {
-        const data = await useGetCurrencyPricesAPI({
+    const fetchData = async () => {
+      if (currencyDataStates.value !== "") {
+        const data = await getCurrencyPricesAPI({
           currencyCode: currencyDataStates.currency_code_left,
         });
         if (data?.result === "success") {
@@ -59,9 +59,9 @@ export default function page() {
             price: parseInt(currencyDataStates.value) * getRate,
           }));
         }
-      };
-      fetchData();
-    }
+      }
+    };
+    fetchData();
   }, [
     currencyDataStates.value,
     currencyDataStates.currency_code_left,

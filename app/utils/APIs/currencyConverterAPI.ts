@@ -1,6 +1,6 @@
 import { useAxiosBaseURL } from "./baseUrl";
 
-export const useGetCurrencyCodesAPI = async (): Promise<
+export const getCurrencyCodesAPI = async (): Promise<
   CurrencyCodesResponseI | undefined
 > => {
   try {
@@ -13,7 +13,7 @@ export const useGetCurrencyCodesAPI = async (): Promise<
   }
 };
 
-export const useGetCurrencyPricesAPI = async ({
+export const getCurrencyPricesAPI = async ({
   currencyCode,
 }: CurrencyPricesI): Promise<CurrencyConversionResponseI | undefined> => {
   try {
