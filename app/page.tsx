@@ -1,4 +1,5 @@
 "use client";
+export const runtime = "edge";
 import { ChangeEvent, useEffect, useState } from "react";
 import {
   getCurrencyCodesAPI,
